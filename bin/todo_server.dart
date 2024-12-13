@@ -32,8 +32,12 @@ class Todo {
 }
 
 class TodoService {
-  final List<Todo> _todos = [];
-  int _nextId = 1;
+  final List<Todo> _todos = [
+    Todo(id: 1, task: 'Learn Dart', completed: true),
+    Todo(id: 2, task: 'Exam Dart', completed: false),
+    Todo(id: 3, task: 'To be expert in Dart', completed: false),
+  ];
+  int _nextId = 4;
 
   List<Todo> get todos => _todos;
 
@@ -60,7 +64,7 @@ class TodoService {
 
 void main() async {
   final service = TodoService();
-  
+
   final router = Router()
     ..get('/todos', (Request request) {
       final jsonTodos = service.todos.map((todo) => todo.toJson()).toList();
