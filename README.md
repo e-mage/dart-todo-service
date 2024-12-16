@@ -39,22 +39,16 @@ $ curl http://localhost:8080/todos
 [{"id":1,"task":"Learn Dart","completed":true},{"id":2,"task":"Exam Dart","completed":false},{"id":3,"task":"To be expert in Dart","completed":false}]
 
 $ curl -X POST http://localhost:8080/todos  -d '{"task": "Learn Flutter"}' -H "Content-Type: application/json"
-Todo added
+[{"id":1,"task":"Learn Dart","completed":true},{"id":2,"task":"Exam Dart","completed":false},{"id":3,"task":"To be expert in Dart","completed":false},{"id":4,"task":"Learn Flutter","completed":false}]
 
 $ curl -X POST http://localhost:8080/todos -d '{"task": "Exam Flutter"}' -H "Content-Type: application/json"
-Todo added
-
-$ curl http://localhost:8080/todos
 [{"id":1,"task":"Learn Dart","completed":true},{"id":2,"task":"Exam Dart","completed":false},{"id":3,"task":"To be expert in Dart","completed":false},{"id":4,"task":"Learn Flutter","completed":false},{"id":5,"task":"Exam Flutter","completed":false}]
 
 $ curl -X PUT http://localhost:8080/todos/2 -d '{"task": "Exam Dart", "completed": true}' -H "Content-Type: application/json"
-Todo updated
-
-$ curl http://localhost:8080/todos
 [{"id":1,"task":"Learn Dart","completed":true},{"id":2,"task":"Exam Dart","completed":true},{"id":3,"task":"To be expert in Dart","completed":false},{"id":4,"task":"Learn Flutter","completed":false},{"id":5,"task":"Exam Flutter","completed":false}]
 
 $ curl -X DELETE http://localhost:8080/todos/1
-Todo deleted
+[{"id":2,"task":"Exam Dart","completed":true},{"id":3,"task":"To be expert in Dart","completed":false},{"id":4,"task":"Learn Flutter","completed":false},{"id":5,"task":"Exam Flutter","completed":false}]
 
 $ curl http://localhost:8080/todos
 [{"id":2,"task":"Exam Dart","completed":true},{"id":3,"task":"To be expert in Dart","completed":false},{"id":4,"task":"Learn Flutter","completed":false},{"id":5,"task":"Exam Flutter","completed":false}]

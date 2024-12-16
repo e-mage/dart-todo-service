@@ -74,17 +74,23 @@ void main() async {
       final payload = await request.readAsString();
       final data = json.decode(payload);
       service.addTodo(data['task']);
-      return Response.ok('Todo added');
+      //return Response.ok('Todo added');
+      final jsonTodos = service.todos.map((todo) => todo.toJson()).toList();
+      return Response.ok(json.encode(jsonTodos), headers: {'Content-Type': 'application/json'});
     })
     ..put('/todos/<id>', (Request request, String id) async {
       final payload = await request.readAsString();
       final data = json.decode(payload);
       service.updateTodo(int.parse(id), data['task'], data['completed']);
-      return Response.ok('Todo updated');
+      //return Response.ok('Todo updated');
+      final jsonTodos = service.todos.map((todo) => todo.toJson()).toList();
+      return Response.ok(json.encode(jsonTodos), headers: {'Content-Type': 'application/json'});
     })
     ..delete('/todos/<id>', (Request request, String id) {
       service.deleteTodo(int.parse(id));
-      return Response.ok('Todo deleted');
+      //return Response.ok('Todo deleted');
+      final jsonTodos = service.todos.map((todo) => todo.toJson()).toList();
+      return Response.ok(json.encode(jsonTodos), headers: {'Content-Type': 'application/json'});
     });
 
   final handler = const Pipeline()
